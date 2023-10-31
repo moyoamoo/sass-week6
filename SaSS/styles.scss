@@ -1,0 +1,338 @@
+
+:root{
+    --dark-green: #023020;
+    --medium-dark-green: #416458;
+    --off-white: #f9f9f9;
+    --ivory: #fffff0;
+}
+
+@mixin hover($background, $color) {
+    background-color: $background;
+    color: $color;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1; 
+
+
+
+    h1{
+        text-align: center;
+        background-color: var(--dark-green);
+        color: var(--off-white);
+        padding: 1rem;
+        font-family: 'Cinzel', serif;
+        letter-spacing: .1em;
+        font-size: 7rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: -4.7rem;
+        background-color: var(--ivory);
+        font-family: 'IBM Plex Mono', monospace;
+        height: 8rem;
+        text-transform: uppercase;
+
+        a {
+            padding: .5rem;
+            border-radius: .5rem; 
+            
+            &:hover{
+                @include hover(var(--medium-dark-green), var(--ivory));
+            }
+        }
+        
+    }
+
+  
+}
+
+@mixin overlay ($color, $background){
+        color: $color;
+        background-color: $background;
+        display: flex;
+        flex-direction: column;
+        flex-direction: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 90%;
+}
+
+
+.heading {
+    position: relative;
+  
+    
+
+    .heading-text {
+        @include overlay ((var(--ivory)), (var(--dark-green)));
+        font-family: 'Nanum Myeongjo', serif;
+        overflow: hidden;
+        
+    }
+
+    p {
+        font-family: 'IBM Plex Mono', monospace;
+    
+    }
+
+    img {
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@mixin headers($color){
+    color: $color;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 4rem;
+
+}
+
+.products h2{
+    @include headers (var(--dark-green));
+}
+
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 2rem;
+}
+
+.card {
+    border-radius: 2rem;
+    width: 30rem;
+
+   .img-container {
+
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+    &:hover .overlay{
+        transform: translateX(0%);
+        transition: all .3s ease-in-out;
+        
+    }
+
+    .overlay{
+      
+        @include overlay(var(--ivory), var(--dark-green) );
+        transform: translateX(100%);
+        font-family: 'IBM Plex Mono', monospace;
+        
+
+    }
+    img{
+        width: 100%;
+
+    }
+   }
+   
+
+
+
+   
+    .card-footer {
+        background-color: var(--ivory);
+        text-align: center;
+        font-size: 3rem;
+        font-family: 'Nanum Myeongjo', serif;
+        text-transform: uppercase;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1.2rem;
+
+
+    
+    }
+
+}
+
+
+
+.about-us {
+    background-color: var(--dark-green);
+    color: var(--ivory);
+    font-family: 'Nanum Myeongjo', serif;
+    height: 45vh;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+ 
+    .about-us-text{
+        @include overlay(var(--ivory), var(--dark-green));
+        font-size: 1.2em;
+        padding: 2rem;
+    }
+
+    .img{
+        width: 100%;
+      
+    }
+
+
+    h2 {
+        @include headers(var(--ivory));
+    }
+
+    a{
+        background-color: var(--ivory);
+        width: 50%;
+        color: var(--medium-dark-green);
+        padding: 1rem;
+        margin: 2rem;
+        font-family: 'IBM Plex Mono', monospace;
+        text-transform: uppercase;
+        
+
+        
+        &:hover{
+            @include hover(var(--medium-dark-green), var(--ivory));
+            
+        }
+    }
+
+   
+}
+
+.newsletter {
+    background-color: var(--ivory);
+    color: var(--dark-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+    font-family: 'Nanum Myeongjo', serif;
+
+    input[type="button"]{
+        background-color: var(--dark-green);
+        color: var(--ivory);
+        border: .2rem solid var(--dark-green);
+        border-radius: .5rem;
+        text-transform: uppercase;
+        text-align: center;
+
+
+        
+    &:hover{
+        @include hover(var(--medium-dark-green), var(ivory));
+        border: .2rem solid var(--medium-dark-green);
+
+    }
+    }
+
+
+
+    
+
+}
+
+@mixin flex-column($justify){
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+}
+
+footer{
+    background-color: var(--medium-dark-green);
+    color: var(--ivory);
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+
+    .socials {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding-top: 2em;
+    
+        .socials-icons{
+          font-size: 2rem;
+
+          i{
+           padding: 2rem;
+          }
+         
+        i:hover{
+            @include hover(var(--medium-dark-green), var(--dark-green));
+        }
+        
+    
+        }
+    
+    
+    }
+}
+
+
+
+.bottom-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.navigation{
+    @include flex-column(space-around);
+
+    a{
+        padding: .4rem;
+        border-radius: .4rem;
+    }
+
+    a:hover{
+        
+        @include hover(var(--ivory), #000);
+    }
+   
+
+}
+
+.contact {
+    @include flex-column(space-between);
+}
+
+@media screen and (min-width: 800px){
+
+    .card-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .heading{
+        font-size: 2.5rem;
+    }
+
+    .card{
+        width: 35rem;
+    }
+
+}
